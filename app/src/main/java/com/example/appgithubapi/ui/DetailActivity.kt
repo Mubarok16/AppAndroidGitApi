@@ -101,10 +101,12 @@ class DetailActivity : AppCompatActivity() {
             binding.progressBar.visibility = View.VISIBLE
             binding.tbFollow.visibility = View.GONE
             binding.vpFollow.visibility = View.GONE
+            binding.bntFav.visibility = View.GONE
         } else {
             binding.progressBar.visibility = View.GONE
             binding.tbFollow.visibility = View.VISIBLE
             binding.vpFollow.visibility = View.VISIBLE
+            binding.bntFav.visibility = View.VISIBLE
         }
     }
     private fun setViewPager(){

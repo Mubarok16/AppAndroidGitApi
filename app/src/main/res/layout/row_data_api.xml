@@ -29,18 +29,6 @@
             tools:ignore="MissingConstraints"
             tools:layout_editor_absoluteX="8dp" />
 
-        <ImageView
-            android:id="@+id/iv_fav"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:contentDescription="@string/save_bookmark"
-            android:src="@drawable/fav_white"
-            android:tag="Not Saved"
-            card_view:layout_constraintBottom_toBottomOf="parent"
-            card_view:layout_constraintEnd_toEndOf="parent"
-            card_view:layout_constraintTop_toTopOf="parent" />
-
         <TextView
             android:id="@+id/tv_item_name"
             android:layout_width="223dp"

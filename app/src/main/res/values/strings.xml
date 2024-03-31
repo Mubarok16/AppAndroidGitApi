@@ -5,6 +5,4 @@
     <string name="tab_satu">followers</string>
     <string name="tab_dua">following</string>
     <string name="content_tab_text">hai  %1$d</string>
-    <string name="save_bookmark">Save Bookmark?</string>
-
 </resources>

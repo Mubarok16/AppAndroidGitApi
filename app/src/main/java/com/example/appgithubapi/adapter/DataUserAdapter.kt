@@ -36,16 +36,6 @@ class DataUserAdapter: ListAdapter<User, DataUserAdapter.MyViewHolder>(DIFF_CALL
         holder.bind(user)
         holder.itemView.setOnClickListener { onItemClickCallback.onItemClicked(user) }
 
-        val ivBookmark = holder.binding.ivFav
-//        if (user.isBookmarked) {
-//            ivBookmark.setImageDrawable(ContextCompat.getDrawable(ivBookmark.context, R.drawable.ic_bookmarked_white))
-//        } else {
-//            ivBookmark.setImageDrawable(ContextCompat.getDrawable(ivBookmark.context, R.drawable.ic_bookmark_white))
-//        }
-//        ivBookmark.setOnClickListener {
-//            onBookmarkClick(news)
-//        }
-
     }
 
     class MyViewHolder(val binding: RowDataApiBinding) : RecyclerView.ViewHolder(binding.root) {
