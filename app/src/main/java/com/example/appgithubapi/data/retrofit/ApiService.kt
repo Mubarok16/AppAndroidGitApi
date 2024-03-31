@@ -36,4 +36,3 @@ import retrofit2.http.*
             @Path("user") user: String
         ): Call<List<Follow>>
     }
-//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
