@@ -9,13 +9,13 @@ import retrofit2.http.*
 
     interface ApiService {
         @GET("search/users")
-        @Headers("Authorization: token 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")
+        @Headers("Authorization: token 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")
         fun getUsers(@Query("q") queryuser: String): Call<DatagithubResponse>
     }
 
     interface DetailService{
         @GET("users/{username}")
-        @Headers("Authorization: token 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")
+        @Headers("Authorization: token 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")
         fun getDetailUsers(
             @Path("username") username: String
         ): Call<DataDetailResponse>
@@ -23,7 +23,7 @@ import retrofit2.http.*
 
     interface followerService{
         @GET("users/{user}/followers")
-        @Headers("Authorization: token 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")
+        @Headers("Authorization: token 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")
         fun getFollowers(
             @Path("user") user: String
         ): Call<List<Follow>>
@@ -32,7 +32,7 @@ import retrofit2.http.*
 
     interface followingService {
         @GET("users/{user}/following")
-        @Headers("Authorization: token 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")
+        @Headers("Authorization: token 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")
         fun getFollowing(
             @Path("user") user: String
         ): Call<List<Follow>>

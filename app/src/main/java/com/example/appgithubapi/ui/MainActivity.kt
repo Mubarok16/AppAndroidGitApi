@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.appgithubapi.adapter.DataUserAdapter
 import com.example.appgithubapi.data.retrofit.ApiConfig
 import com.example.appgithubapi.data.response.User
 import com.example.appgithubapi.data.response.DatagithubResponse

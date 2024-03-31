@@ -1,15 +1,12 @@
-package com.example.appgithubapi.ui
+package com.example.appgithubapi.adapter
 
-import android.os.Parcel
-import android.os.Parcelable
 import androidx.recyclerview.widget.RecyclerView
 import android.view.ViewGroup
 import android.view.LayoutInflater
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
-import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.bumptech.glide.Glide
-import com.example.appgithubapi.data.response.Follow
 import com.example.appgithubapi.data.response.User
 import com.example.appgithubapi.databinding.RowDataApiBinding
 
@@ -38,6 +35,17 @@ class DataUserAdapter: ListAdapter<User, DataUserAdapter.MyViewHolder>(DIFF_CALL
         val user = getItem(position)
         holder.bind(user)
         holder.itemView.setOnClickListener { onItemClickCallback.onItemClicked(user) }
+
+        val ivBookmark = holder.binding.ivFav
+//        if (user.isBookmarked) {
+//            ivBookmark.setImageDrawable(ContextCompat.getDrawable(ivBookmark.context, R.drawable.ic_bookmarked_white))
+//        } else {
+//            ivBookmark.setImageDrawable(ContextCompat.getDrawable(ivBookmark.context, R.drawable.ic_bookmark_white))
+//        }
+//        ivBookmark.setOnClickListener {
+//            onBookmarkClick(news)
+//        }
+
     }
 
     class MyViewHolder(val binding: RowDataApiBinding) : RecyclerView.ViewHolder(binding.root) {
