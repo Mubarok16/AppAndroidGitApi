@@ -1,4 +1,4 @@
-package com.example.appgithubapi.database
+package com.example.appgithubapi.data.local.database
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
@@ -19,6 +19,12 @@ interface FavDao {
     @Delete
     fun delete(favorite: Favorite)
 
-    @Query("SELECT * FROM Favorite ORDER BY id ASC")
-    fun getAllFavorite():LiveData<List<Favorite>>
+    @Query("SELECT * FROM Favorite ORDER BY id DESC")
+    fun getAllFavorite():List<Favorite>
+
+    @Query("SELECT * FROM Favorite WHERE name = :name AND favoritebtn = 1")
+    fun getFavorite(name: String): List<Favorite>
+
+    @Query("DELETE FROM Favorite WHERE name = :name")
+    fun deleteFav(name: String)
 }

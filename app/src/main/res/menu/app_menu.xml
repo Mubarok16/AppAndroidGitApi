@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <group android:menuCategory="container">
+        <item
+            android:id="@+id/btn_favorite"
+            android:icon="@drawable/icon_fav_red"
+            android:title="favorite"
+            app:showAsAction="ifRoom" />
+        <item
+            android:id="@+id/btn_setting"
+            android:title="setting"
+            app:showAsAction="never" />
+
+    </group>
+</menu>

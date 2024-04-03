@@ -1,4 +1,4 @@
-package com.example.appgithubapi.database
+package com.example.appgithubapi.data.local.database
 
 import android.os.Parcelable
 import androidx.room.ColumnInfo
@@ -18,6 +18,9 @@ data class Favorite(
     var name: String? = null,
 
     @ColumnInfo(name = "avatarUrl")
-    var avatarUrl: String? = null
+    var avatarUrl: String? = null,
+
+    @ColumnInfo(name = "favoritebtn")
+    var favoritebtn: Boolean = false
 
 ) : Parcelable
