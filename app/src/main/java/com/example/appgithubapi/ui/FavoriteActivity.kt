@@ -2,36 +2,19 @@ package com.example.appgithubapi.ui
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Observer
-import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.appgithubapi.R
 import com.example.appgithubapi.adapter.FavoriteAdapter
 import com.example.appgithubapi.data.local.database.Favorite
 import com.example.appgithubapi.data.local.database.FavoriteRoomDatabase
 import com.example.appgithubapi.databinding.ActivityFavoriteBinding
-import com.example.appgithubapi.databinding.ActivityMainBinding
-import com.loopj.android.http.AsyncHttpClient.log
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import com.example.appgithubapi.data.local.database.FavoriteViewModelFactory
 
 class FavoriteActivity : AppCompatActivity() {
 
-    val db by lazy { FavoriteRoomDatabase.getDatabase(this) }
     private lateinit var binding: ActivityFavoriteBinding
-    private val liveData = MutableLiveData<List<Favorite>>()
-    private val observer = Observer<List<Favorite>> {
-        getDataFavorite()
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,18 +22,10 @@ class FavoriteActivity : AppCompatActivity() {
         binding = ActivityFavoriteBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
-        liveData.observe(this,observer)
-        getDataFavorite()
-
-    }
-    private fun getDataFavorite() {
-        CoroutineScope(Dispatchers.IO).launch {
-            val fav = db.favDao().getAllFavorite()
-//            log.d("FavoriteActivity", "dbResponse: ${fav[0].name}")
-            withContext(Dispatchers.Main) {
-                setRecycleView(fav)
-            }
+        val databse = FavoriteRoomDatabase.getDatabaseFav(this)
+        val settingViewModel = ViewModelProvider(this, FavoriteViewModelFactory(databse))[FavoriteViewModel::class.java]
+        settingViewModel.getFavorite().observeForever { fav: List<Favorite> ->
+           setRecycleView(fav)
         }
 
     }
@@ -75,6 +50,11 @@ class FavoriteActivity : AppCompatActivity() {
         })
     }
 
+
+
+
 }
+
+
 
 
