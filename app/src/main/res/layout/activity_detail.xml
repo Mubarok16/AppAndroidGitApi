@@ -5,6 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="10dp"
     tools:context=".ui.DetailActivity">
 
     <de.hdodenhof.circleimageview.CircleImageView
@@ -23,24 +24,24 @@
         android:layout_width="match_parent"
         android:layout_height="30dp"
         android:layout_marginTop="16dp"
-        tools:text="username"
-        android:textSize="20dp"
         android:textAlignment="center"
+        android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profile_image" />
+        app:layout_constraintTop_toBottomOf="@+id/profile_image"
+        tools:text="username" />
 
     <TextView
         android:id="@+id/tv_name"
         android:layout_width="match_parent"
         android:layout_height="30dp"
         android:layout_marginTop="8dp"
-        tools:text="name"
         android:textAlignment="center"
         android:textSize="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_username" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_username"
+        tools:text="name" />
 
     <TextView
         android:id="@+id/tv_following"
@@ -107,5 +108,17 @@
         tools:layout_editor_absoluteX="0dp">
 
     </androidx.viewpager2.widget.ViewPager2>
+
+    <ImageView
+        android:id="@+id/bnt_fav"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/border_radius"
+        android:padding="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/icon_fav_white" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

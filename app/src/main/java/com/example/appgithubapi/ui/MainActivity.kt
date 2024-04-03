@@ -5,9 +5,17 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.appgithubapi.R
+import com.example.appgithubapi.adapter.DataUserAdapter
+import com.example.appgithubapi.data.local.datastore.SettingPreference
+import com.example.appgithubapi.data.local.datastore.ViewModelFactory
+import com.example.appgithubapi.data.local.datastore.dataStore
 import com.example.appgithubapi.data.retrofit.ApiConfig
 import com.example.appgithubapi.data.response.User
 import com.example.appgithubapi.data.response.DatagithubResponse
@@ -20,7 +28,6 @@ import retrofit2.Response
 
 class MainActivity : AppCompatActivity(){
 
-
     private lateinit var binding: ActivityMainBinding
 
     companion object {
@@ -31,6 +38,7 @@ class MainActivity : AppCompatActivity(){
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
 
         val layoutManager = LinearLayoutManager(this)
         binding.rvDataApi.layoutManager = layoutManager
@@ -48,7 +56,44 @@ class MainActivity : AppCompatActivity(){
                 }
         }
 
+        cekSetting()
+        setAppbar()
         findUser(shuffle())
+    }
+
+    private fun cekSetting() {
+        val pref = SettingPreference.getInstance(application.dataStore)
+        val settingViewModel = ViewModelProvider(this, ViewModelFactory(pref)).get(
+            SettingViewModel::class.java
+        )
+
+        settingViewModel.getThemeSet().observe(this){ isDarkModeActive: Boolean ->
+
+            if (isDarkModeActive) {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+            } else {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+            }
+
+        }
+    }
+
+    private fun setAppbar() {
+        binding.AppBar.setOnMenuItemClickListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.btn_favorite -> {
+                    val intent = Intent(this, FavoriteActivity::class.java)
+                    startActivity(intent)
+                    true
+                }
+                R.id.btn_setting -> {
+                    val sIntent = Intent(this, SettingActivity::class.java)
+                    startActivity(sIntent)
+                    true
+                }
+                else -> false
+            }
+        }
     }
 
     fun findUser(cari: String){

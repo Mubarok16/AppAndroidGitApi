@@ -1,15 +1,12 @@
-package com.example.appgithubapi.ui
+package com.example.appgithubapi.adapter
 
-import android.os.Parcel
-import android.os.Parcelable
 import androidx.recyclerview.widget.RecyclerView
 import android.view.ViewGroup
 import android.view.LayoutInflater
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
-import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.bumptech.glide.Glide
-import com.example.appgithubapi.data.response.Follow
 import com.example.appgithubapi.data.response.User
 import com.example.appgithubapi.databinding.RowDataApiBinding
 
@@ -38,6 +35,7 @@ class DataUserAdapter: ListAdapter<User, DataUserAdapter.MyViewHolder>(DIFF_CALL
         val user = getItem(position)
         holder.bind(user)
         holder.itemView.setOnClickListener { onItemClickCallback.onItemClicked(user) }
+
     }
 
     class MyViewHolder(val binding: RowDataApiBinding) : RecyclerView.ViewHolder(binding.root) {
