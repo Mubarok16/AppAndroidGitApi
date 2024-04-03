@@ -2,22 +2,13 @@ package com.example.appgithubapi.ui
 
 import android.os.Bundle
 import android.widget.CompoundButton
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import androidx.datastore.preferences.core.Preferences
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.get
-import com.example.appgithubapi.R
 import com.example.appgithubapi.data.local.datastore.SettingPreference
 import com.example.appgithubapi.data.local.datastore.ViewModelFactory
 import com.example.appgithubapi.data.local.datastore.dataStore
-import com.example.appgithubapi.databinding.ActivityMainBinding
 import com.example.appgithubapi.databinding.ActivitySettingBinding
-import kotlinx.coroutines.InternalCoroutinesApi
 
 class SettingActivity : AppCompatActivity() {
 
@@ -31,6 +22,7 @@ class SettingActivity : AppCompatActivity() {
         val settingViewModel = ViewModelProvider(this, ViewModelFactory(pref)).get(
             SettingViewModel::class.java
         )
+
 
         settingViewModel.getThemeSet().observe(this){ isDarkModeActive: Boolean ->
 
